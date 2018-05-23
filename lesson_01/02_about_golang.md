@@ -60,72 +60,72 @@ Golang のオブジェクト指向を理解する為、再度再度オブジェ�
 下記は Java の場合と Golang の場合で同じ結果になる処理です。
 
 - Java の場合
-```Java
-class Animal {
-    private String name;
-
-    public Animal(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return "I'm " + this.name;
-    }
-}
-
-class Dog extends Animal {
-    private String name;
-    public Dog(String name) {
-        super(name);
-    }
-}
-
-public class Main {
-    public static void main(String[] args) throws Exception {
-        Animal animal = new Animal("dog");
-
-        // 出力: I'm Dog
-        System.out.println(animal.getName());
+    ```Java
+    class Animal {
+        private String name;
     
-        Dog dog = new Dog("dog");
-        
-        // 出力: I'm Dog
-        System.out.println(dog.getName());
+        public Animal(String name) {
+            this.name = name;
+        }
+    
+        public String getName() {
+            return "I'm " + this.name;
+        }
     }
-}
-```
+    
+    class Dog extends Animal {
+        private String name;
+        public Dog(String name) {
+            super(name);
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) throws Exception {
+            Animal animal = new Animal("dog");
+    
+            // 出力: I'm Dog
+            System.out.println(animal.getName());
+        
+            Dog dog = new Dog("dog");
+            
+            // 出力: I'm Dog
+            System.out.println(dog.getName());
+        }
+    }
+    ```
 
 - Golang の場合
-```go
-package main
-import "fmt"
-
-type (
-    Animal struct {
-        name string
+    ```go
+    package main
+    import "fmt"
+    
+    type (
+        Animal struct {
+            name string
+        }
+        Dog struct {
+            Animal
+        }
+    )
+    
+    func (a *Animal) GetName() string {
+        return "I’m " + a.name
     }
-    Dog struct {
-        Animal
+    
+    func main() {
+        animal := Animal{name: "dog"}
+    
+        // 出力: I'm Dog
+        fmt.Println(animal.GetName())
+    
+        dog := new(Dog)
+        dog.name = "dog"
+    
+        // 出力: I'm Dog
+        fmt.Println(dog.GetName())
     }
-)
-
-func (a *Animal) GetName() string {
-    return "I’m " + a.name
-}
-
-func main() {
-    animal := Animal{name: "dog"}
-
-    // 出力: I'm Dog
-    fmt.Println(animal.GetName())
-
-    dog := new(Dog)
-    dog.name = "dog"
-
-    // 出力: I'm Dog
-    fmt.Println(dog.GetName())
-}
-```
+    ```
 
 オブジェクト指向の方法に違いがあり、細かい所では書き方が異なりますが、同じ様な書き方ができます。
 
@@ -155,90 +155,86 @@ func main() {
 それでは、Golang の基本構文を見ていきましょう。
 
 - package の指定と、ライブラリの読み込み
-```go
-// package は最上段に書きます。 その時にコメントは無視されます。
-package main
-
-// import 文により、他のライブラリを読み込みます。
-import “fmt”
-```
-
+    ```go
+    // package は最上段に書きます。 その時にコメントは無視されます。
+    package main
+    
+    // import 文により、他のライブラリを読み込みます。
+    import “fmt”
+    ```
 - struct の書き方
-```go
-// type 文によって Struct を定義します
-// Animal と頭文字を大文字で書いた場合は public にります
-type Animal struct {
-    name string
-}
-
-// dog と頭文字を小文字で書いた場合は、private となり、他の package から触る事ができなくなります (カプセル化)
-type dog struct {
-    Animal
-}
-
-// type 文は () で囲む事によって一纏めにすることが出来ます
-type (
-    Animal struct {
-        name string
-    }
-    Dog struct {
-        Animal
-    }
-)
-```
-
+    ```go
+     // type 文によって Struct を定義します
+     // Animal と頭文字を大文字で書いた場合は public にります
+     type Animal struct {
+         name string
+     }
+     
+     // dog と頭文字を小文字で書いた場合は、private となり、他の package から触る事ができなくなります (カプセル化)
+     type dog struct {
+         Animal
+     }
+     
+     // type 文は () で囲む事によって一纏めにすることが出来ます
+     type (
+         Animal struct {
+             name string
+         }
+         Dog struct {
+             Animal
+         }
+     )
+    ```
 - メソッドの書き方
-```go
-// Golang の特殊な書き方で、(a *Animal) の部分の右側をレシーバと言い、このメソッドを所有する Struct を指定しています
-// GetName と頭文字が大文字の場合は public になり、小文字で getName とすると private になります
-// string の部分は戻り値の型が書かれます。この場合は string (文字列型) を返しています
-func (a *Animal) GetName() string {
-    // return の後に戻り値を記述します
-    // “” で囲んだ文字は文字列型になります
-    // a.name は、レシーバの左側にある文字 a は、レシーバの参照 (instance のようなもの。他の言語でいう this 相当) を表しています
-    return "I’m " + a.name
-}
-```
-
+    ```go
+    // Golang の特殊な書き方で、(a *Animal) の部分の右側をレシーバと言い、このメソッドを所有する Struct を指定しています
+    // GetName と頭文字が大文字の場合は public になり、小文字で getName とすると private になります
+    // string の部分は戻り値の型が書かれます。この場合は string (文字列型) を返しています
+    func (a *Animal) GetName() string {
+        // return の後に戻り値を記述します
+        // “” で囲んだ文字は文字列型になります
+        // a.name は、レシーバの左側にある文字 a は、レシーバの参照 (instance のようなもの。他の言語でいう this 相当) を表しています
+        return "I’m " + a.name
+    }
+    ```
 - global な関数
-```go
-// レシーバの記述が無い場合は、この Package 内で利用可能な global な関数として扱われます
-// GetName のあとの() に書かれた 『name string』は、この関数内で利用する name という変数が string 型であることを表します
-func GetName(name string) string {
-    return "I’m " + name
-}
-
-func main() {
-    name := GetName("dog")
-
-    fmt.Println(name)
-}
-```
-
+    ```go
+    // レシーバの記述が無い場合は、この Package 内で利用可能な global な関数として扱われます
+    // GetName のあとの() に書かれた 『name string』は、この関数内で利用する name という変数が string 型であることを表します
+    func GetName(name string) string {
+        return "I’m " + name
+    }
+    
+    func main() {
+        name := GetName("dog")
+    
+        fmt.Println(name)
+    }
+    ```
 - 処理の書き方
-```go
-// main() はプログラムが実行された際に最初に呼ばれる関数になります
-func main() {
-    // Struct Animal の変数を代入しています
-    // animal は、変数相当の物になります
-    // 『:=』は、型推論を行う時の書き方です
-    // 型推論をしない場合 var animal Animal = Animal(name: “dog”) となります
-    // Animal{} は、Struct から変数を得る時の書き方になります
-    // name: “dog” は、Animal のプロパティ name に dog という文字列を代入しています
-    animal := Animal{name: "dog"}
-
-    // fmt.Println は、文字列を標準出力に表示する方法
-    // animal の GetName メソッドを実行しています
-    fmt.Println(animal.GetName())
-
-    // new により Struct Dog のポインタを代入しています
-    dog := new(Dog)
-    // dog にMixin された Animal の name プロパティに文字列 dog を代入しています
-    dog.name = "dog"
-
-     // dog に MIxin された Animal の GetName メソッドを実行しています
-     fmt.Println(dog.GetName())
-```
+    ```go
+    // main() はプログラムが実行された際に最初に呼ばれる関数になります
+    func main() {
+        // Struct Animal の変数を代入しています
+        // animal は、変数相当の物になります
+        // 『:=』は、型推論を行う時の書き方です
+        // 型推論をしない場合 var animal Animal = Animal(name: “dog”) となります
+        // Animal{} は、Struct から変数を得る時の書き方になります
+        // name: “dog” は、Animal のプロパティ name に dog という文字列を代入しています
+        animal := Animal{name: "dog"}
+    
+        // fmt.Println は、文字列を標準出力に表示する方法
+        // animal の GetName メソッドを実行しています
+        fmt.Println(animal.GetName())
+    
+        // new により Struct Dog のポインタを代入しています
+        dog := new(Dog)
+        // dog にMixin された Animal の name プロパティに文字列 dog を代入しています
+        dog.name = "dog"
+    
+         // dog に MIxin された Animal の GetName メソッドを実行しています
+         fmt.Println(dog.GetName())
+    ```
 
 これが Golang の基本的な構文になります。
 

@@ -15,66 +15,66 @@ Golang では、環境変数 GOPATH の設定が非常に重要になります�
 1. Golang 開発用のディレクトリを作成する
     - Mac の場合
       1. /Users/xxx/go を作成するため、ターミナルを開き次のコマンドを入力
-        ```bash
-        # ~/ は、現在のユーザ (current user) のディレクトリを表す
-        mkdir ~/go
-        ```
-        - 手作業で GUI で入力するのも可
+          ```bash
+          # ~/ は、現在のユーザ (current user) のディレクトリを表す
+          mkdir ~/go
+          ```
+          - 手作業で GUI で入力するのも可
     - Windows の場合
       1. ﻿C:\Users\xxx\go を作成するため、コマンドプロンプトを開き次のコマンドを入力
-        ```bash
-         mkdir %USERPROFILE%\go
-         ```
-         - 手作業で GUI で入力するのも可
+          ```bash
+           mkdir %USERPROFILE%\go
+           ```
+          - 手作業で GUI で入力するのも可
 1. Golang をインストールする
     - インストール先のディレクトリ等はデフォルトのままで OK
 1. Golang インストールの確認
     - Mac の場合
-      1. ターミナルを開き、次のコマンドを入力
-        ```bash
-        go env
-        ```
+        1. ターミナルを開き、次のコマンドを入力
+            ```bash
+            go env
+            ```
     - Windows の場合
-      1. コマンドプロンプトを開き、次のコマンドを入力
-        ```
-        go env
-        ```
+        1. コマンドプロンプトを開き、次のコマンドを入力
+            ```bash
+            go env
+            ```
 1. 環境変数の一覧が表示されたら成功です
 1. 環境変数の設定を行います
     - Mac の場合
-      1. .bashrc を開きます
-        ```bash
-        vi ~/.bashrc
-        ```
-      1. 下記を追記します
-        ```bash
-        export GOPATH=$HOME/go
-        export PATH=$PATH:$GOPATH/bin
-        ```
-      1. 設定を読み込みます
-        ```bash
-        source ~/.bashrc
-        ```
+        1. .bashrc を開きます
+            ```bash
+            vi ~/.bashrc
+            ```
+        1. 下記を追記します
+            ```bash
+            export GOPATH=$HOME/go
+            export PATH=$PATH:$GOPATH/bin
+            ```
+        1. 設定を読み込みます
+            ```bash
+            source ~/.bashrc
+            ```
     - Windows の場合
-      - デフォルトで良い感じに設定される様子？
-      - 自身で設定する場合
-          1. Windows メニュー から、『コンピュータ』を右クリック → 『プロパティ』をクリック
-          1. 『システムの詳細設定』をクリック
-          1. 『環境変数』ボタンをクリック
-          1. 下記を追記します
-              - 変数名: GOPATH
-              - 変数値: %USERPROFILE%\go
+        - デフォルトで良い感じに設定される様子？
+        - 自身で設定する場合
+            1. Windows メニュー から、『コンピュータ』を右クリック → 『プロパティ』をクリック
+            1. 『システムの詳細設定』をクリック
+            1. 『環境変数』ボタンをクリック
+            1. 下記を追記します
+                - 変数名: GOPATH
+                - 変数値: %USERPROFILE%\go
 1. GOPATH の確認
     - Mac の場合
-      1. ターミナルを開き、次のコマンドを入力
-        ```bash
-        go env
-        ```
+        1. ターミナルを開き、次のコマンドを入力
+            ```bash
+            go env
+            ```
     - Windows の場合
-      1. コマンドプロンプトを開き、次のコマンドを入力
-        ```
-        go env
-        ```
+        1. コマンドプロンプトを開き、次のコマンドを入力
+            ```
+            go env
+            ```
 1. GOPATH に設定した情報が反映されていれば OK です
 
 ### IDE のインストール
@@ -128,10 +128,10 @@ Golang 開発環境構築は他の言語と比べると比較的簡単ですが�
 ### 開発用ディレクトリを作成する
 1. GOPATH の src ディレクトリの下に次のディレクトリを作成します
     - github のアカウントが有る場合
-      - GOPATH/src/github.com/xxx
-        - xxx は自身のアカウント名
+        - GOPATH/src/github.com/xxx
+            - xxx は自身のアカウント名
     - github アカウントが無い場合
-      - GOPATH/src/local
+        - GOPATH/src/local
 
 ### 最初のプロジェクト作成
 では、IDE でプロジェクトを作成してみましょう！
@@ -155,40 +155,40 @@ Golang 開発環境構築は他の言語と比べると比較的簡単ですが�
     - ソース・ファイル: test.go
 1. test.go が開かれるので次を記述
     - package 名を main に変更する
-      ```diff
-      - package go-first-project
-      + package main
-      ```
+        ```diff
+        - package go-first-project
+        + package main
+        ```
     - import の中に "fmt" を記述
-      ```diff
-        import (
-      +     "fmt"
-        )
-      ```
+        ```diff
+          import (
+        +     "fmt"
+          )
+        ```
     - func main を作る
-      ```go
-      func main() {
-  	
-      }
-      ```
-    - Hello World!! を出力する
-      ```diff
+        ```go
         func main() {
-      +     fmt.Println("Hello World!")
+      
         }
-      ```
+        ```
+    - Hello World!! を出力する
+        ```diff
+          func main() {
+        +     fmt.Println("Hello World!")
+          }
+        ```
     - 最終的に次のようになります
-      ```go
-      package main
-      
-      import (
-          "fmt"
-      )
-      
-      func main() {
-          fmt.Println("Hello World")
-      }
-      ```
+        ```go
+        package main
+        
+        import (
+            "fmt"
+        )
+        
+        func main() {
+            fmt.Println("Hello World")
+        }
+        ```
 1. ファイルを保存する
 1. エディタ上で右クリック → 『実行』 → 『1 Go アプリケーション』をクリック
 1. コンソールに Hello World! と表示されたら成功です
@@ -214,9 +214,9 @@ dep を使う事で、プロジェクト毎に異なりバージョンのライ�
     - ラジオボタンから『ローカル』を選択
     - エンコード: UTF-8
 1. ターミナル上で次のコマンドを実行
-  ```bash
-  go get -u github.com/golang/dep/cmd/dep
-  ```
+    ```bash
+    go get -u github.com/golang/dep/cmd/dep
+    ```
 
 #### Golang の Web フレームワークを導入する
 フレームワークは、日本語では枠組み。
@@ -246,67 +246,65 @@ Web サイトを作るなら、Web の基本機能を提供してくれるフレ
     - ソース・ファイル: server.go
 1. server.go が開かれるので次を記述
     - package 名を main に変更する
-      ```diff
-      - package go-first-project
-      + package main
-      ```
+        ```diff
+        - package go-first-project
+        + package main
+        ```
     - import の中に "net/http", "github.com/labstack/echo" を記述
-      ```diff
+        ```diff
+          import (
+              "net/http"
+        +     "github.com/labstack/echo"
+          )
+        ```
+    - func main を作る
+        ```go
+        func main() {
+      
+        }
+        ```
+    - echo フレームワークの機能をポインタとして呼び出す
+        ```diff
+          func main() {
+        +     e := echo.New()
+          }
+        ```
+    - ルーティング(http://xxx.yyy/zzz の zzz にアクセスした際にどのようなページを表示するか)
+        ```diff
+          func main() {
+              e := echo.New()
+        +     e.GET("/", func(c echo.Context) error {
+        +         return c.String(http.StatusOK, "Hello, World!")
+        +     })
+          }
+        ```
+    - サーバ起動処理と、ロギング処理を記述
+        ```diff
+          func main() {
+              e := echo.New()
+              e.GET("/", func(c echo.Context) error {
+                    return c.String(http.StatusOK, "Hello, World!")
+              })
+        +     e.Logger.Fatal(e.Start(":1323"))
+          }
+        ```
+    - 最終的に次のようになります
+        ```go
+        package main
+        
         import (
             "net/http"
-      +     "github.com/labstack/echo"
+            "github.com/labstack/echo"
         )
-      ```
-    - func main を作る
-      ```go
-      func main() {
-  	
-      }
-      ```
-    - echo フレームワークの機能をポインタとして呼び出す
-      ```diff
-        func main() {
-      +     e := echo.New()
-        }
-      ```
-    - ルーティング(http://xxx.yyy/zzz の zzz にアクセスした際にどのようなページを表示するか)
-      ```diff
-        func main() {
-  	      e := echo.New()
-      +     e.GET("/", func(c echo.Context) error {
-      +         return c.String(http.StatusOK, "Hello, World!")
-      +     })
-        }
-      
-      ```
-    - サーバ起動処理と、ロギング処理を記述
-      ```diff
+        
         func main() {
             e := echo.New()
             e.GET("/", func(c echo.Context) error {
-                  return c.String(http.StatusOK, "Hello, World!")
+                return c.String(http.StatusOK, "Hello, World!")
             })
-      +   e.Logger.Fatal(e.Start(":1323"))
+            e.Logger.Fatal(e.Start(":1323"))
         }
-      ```
-    - 最終的に次のようになります
-      ```go
-      package main
-      
-      import (
-      	"net/http"
-      	
-      	"github.com/labstack/echo"
-      )
-      
-      func main() {
-      	e := echo.New()
-      	e.GET("/", func(c echo.Context) error {
-      		return c.String(http.StatusOK, "Hello, World!")
-      	})
-      	e.Logger.Fatal(e.Start(":1323"))
-      }
-      ```
+        ```
 1. ファイルを保存する
 1. ターミナル、コマンドプロンプトで次のコマンドを入力
     ```bash
@@ -320,23 +318,23 @@ Web サイトを作るなら、Web の基本機能を提供してくれるフレ
 1. IDE のターミナルを見るとエラーメッセージが表示されていることが確認できます
 1. 先程の server.go を修正してみましょう
     - http://localhost:1323/test に対応するルーティングを書いてみましょう
-      ```diff
-          func main() {
-            e := echo.New()
-            e.GET("/", func(c echo.Context) error {
-                return c.String(http.StatusOK, "Hello, World!")
-            })
-      +     e.GET("/test", func(c echo.Context) error {
-      +         return c.String(http.StatusOK, "testを表示するよ！")
-      +     })
-            e.Logger.Fatal(e.Start(":1323"))
+        ```diff
+            func main() {
+                e := echo.New()
+                e.GET("/", func(c echo.Context) error {
+                    return c.String(http.StatusOK, "Hello, World!")
+                })
+        +       e.GET("/test", func(c echo.Context) error {
+        +           return c.String(http.StatusOK, "testを表示するよ！")
+        +       })
+                e.Logger.Fatal(e.Start(":1323"))
             }
-      ```
+        ```
 1. terminal で Ctrl+C と入力して Webサーバを落とします
 1. 再度 Webサーバ を立ち上げましょう
-    ```bash
-    go run server.go
-    ```
+      ```bash
+      go run server.go
+      ```
 1. http://localhost:1323/test をブラウザで開いてみましょう
 
 #### API サーバを立ち上げる
@@ -344,101 +342,100 @@ Web サイトを作るなら、Web の基本機能を提供してくれるフレ
 
 1. API の レスポンス用の Struct を定義する
     - Golang では API のレスポンス毎に Struct を定義します
-      - Name を返す API になｒます
-      - レスポンスで使う Struct は Public の必要があるので頭文字は大文字になります
-      ```diff
+        - Name を返す API になｒます
+        - レスポンスで使う Struct は Public の必要があるので頭文字は大文字になります
+            ```diff
+              import (
+                  "net/http"
+                  "github.com/labstack/echo"
+              )
+            + 
+            + type (
+            +     Response struct {
+            +         Name string
+            +     }
+            + )
+            ```
+    - API 用のルーティングを作ります
+        - API らしく、/api から開始して、Path パラメータ (URL の Path をパラメータとして利用する places/osaka/no/1001 みたいな物) を使ってみましょう
+            ```diff
+                  e.GET("/", func(c echo.Context) error {
+                      return c.String(http.StatusOK, "Hello, World!")
+                  })
+                  e.GET("/test", func(c echo.Context) error {
+                      return c.String(http.StatusOK, "testを表示するよ！")
+                  })
+            +     e.GET("/api/users/:name", func(c echo.Context) error {
+            +         name := c.Param("name")
+            +         return c.JSON(http.StatusOK, Response{Name: name})
+            +     })
+                  e.Logger.Fatal(e.Start(":1323"))
+              }
+            ```
+    - Path パラメータを取り出してみます
+        ```diff
+              e.GET("/", func(c echo.Context) error {
+                  return c.String(http.StatusOK, "Hello, World!")
+              })
+              e.GET("/test", func(c echo.Context) error {
+                  return c.String(http.StatusOK, "testを表示するよ！")
+              })
+              e.GET("/api/users/:name", func(c echo.Context) error {
+        +         name := c.Param("name")
+              })
+              e.Logger.Fatal(e.Start(":1323"))
+          }
+        ```
+    - API なのでレスポンスを返す時は JSON 形式にしてみましょう
+        - c.JSON とすることで、JSON 型のレスポンスを返すことができます
+        - 第一引数: http.StatusOK
+        - 第二引数: この API のレスポンスになります
+            ```diff
+                  e.GET("/", func(c echo.Context) error {
+                      return c.String(http.StatusOK, "Hello, World!")
+                  })
+                  e.GET("/test", func(c echo.Context) error {
+                      return c.String(http.StatusOK, "testを表示するよ！")
+                  })
+                  e.GET("/api/users/:name", func(c echo.Context) error {
+                      name := c.Param("name")
+            +         return c.JSON(http.StatusOK, Response{Name: name})
+                  })
+                  e.Logger.Fatal(e.Start(":1323"))
+              }
+            ```
+    - 最終的にこのようになります
+        ```go
+        package main
+        
         import (
             "net/http"
             "github.com/labstack/echo"
         )
-      + 
-      + type (
-      +     Response struct {
-      +	        Name string
-      +     }
-      + )
-      ```
-    - API 用のルーティングを作ります
-      - API らしく、/api から開始して、Path パラメータ (URL の Path をパラメータとして利用する places/osaka/no/1001 みたいな物) を使ってみましょう
-      ```diff
+        
+        type (
+            Response struct {
+                Name string
+            }
+        )
+        
+        func main() {
+            e := echo.New()
             e.GET("/", func(c echo.Context) error {
                 return c.String(http.StatusOK, "Hello, World!")
             })
+          
             e.GET("/test", func(c echo.Context) error {
-                return c.String(http.StatusOK, "testを表示するよ！")
+                return c.String(http.StatusOK, "testを表示するよ！")     
             })
-      +     e.GET("/api/users/:name", func(c echo.Context) error {
-      +         name := c.Param("name")
-      +         return c.JSON(http.StatusOK, Response{Name: name})
-      +     })
-            e.Logger.Fatal(e.Start(":1323"))
-        }
-      ```
-    - Path パラメータを取り出してみます
-      ```diff
-            e.GET("/", func(c echo.Context) error {
-                return c.String(http.StatusOK, "Hello, World!")
-            })
-            e.GET("/test", func(c echo.Context) error {
-                return c.String(http.StatusOK, "testを表示するよ！")
-            })
-            e.GET("/api/users/:name", func(c echo.Context) error {
-      +         name := c.Param("name")
-            })
-            e.Logger.Fatal(e.Start(":1323"))
-        }
-      ```
-    - API なのでレスポンスを返す時は JSON 形式にしてみましょう
-      - c.JSON とすることで、JSON 型のレスポンスを返すことができます
-      - 第一引数: http.StatusOK
-      - 第二引数: この API のレスポンスになります
-      ```diff
-            e.GET("/", func(c echo.Context) error {
-                return c.String(http.StatusOK, "Hello, World!")
-            })
-            e.GET("/test", func(c echo.Context) error {
-                return c.String(http.StatusOK, "testを表示するよ！")
-            })
+          
             e.GET("/api/users/:name", func(c echo.Context) error {
                 name := c.Param("name")
-      +         return c.JSON(http.StatusOK, Response{Name: name})
+                return c.JSON(http.StatusOK, Response{Name: name})
             })
             e.Logger.Fatal(e.Start(":1323"))
         }
-      ```
-    - 最終的にこのようになります
-      ```go
-      package main
-      
-      import (
-      	"net/http"
-      	
-      	"github.com/labstack/echo"
-      )
-      
-      type (
-      	Response struct {
-      		Name string
-      	}
-      )
-      
-      func main() {
-      	e := echo.New()
-      	e.GET("/", func(c echo.Context) error {
-      		return c.String(http.StatusOK, "Hello, World!")
-      	})
-      	
-      	e.GET("/test", func(c echo.Context) error {
-      	    return c.String(http.StatusOK, "testを表示するよ！")
-          })
-      	
-      	e.GET("/api/users/:name", func(c echo.Context) error {
-      		name := c.Param("name")
-      	    return c.JSON(http.StatusOK, Response{Name: name})
-          })
-      	e.Logger.Fatal(e.Start(":1323"))
-      }
-      ```
+        ```
 1. IDE のターミナルを開き Ctrl+C で Webサーバを落とします
 1. 再度 Webサーバ を立ち上げましょう
     ```bash
