@@ -196,7 +196,7 @@ func (a *Animal) GetName() string {
     // return の後に戻り値を記述します
     // “” で囲んだ文字は文字列型になります
     // a.name は、レシーバの左側にある文字 a は、レシーバの参照 (instance のようなもの。他の言語でいう this 相当) を表しています
-    return “I’m “ + a.name
+    return "I’m " + a.name
 }
 ```
 
@@ -205,11 +205,11 @@ func (a *Animal) GetName() string {
 // レシーバの記述が無い場合は、この Package 内で利用可能な global な関数として扱われます
 // GetName のあとの() に書かれた 『name string』は、この関数内で利用する name という変数が string 型であることを表します
 func GetName(name string) string {
-    //return “I’m “ + name
+    return "I’m " + name
 }
 
 func main() {
-    name := GetName{“dog”}
+    name := GetName("dog")
 
     fmt.Println(name)
 }
@@ -222,10 +222,10 @@ func main() {
     // Struct Animal の変数を代入しています
     // animal は、変数相当の物になります
     // 『:=』は、型推論を行う時の書き方です
-    // 型推論をしない場合 animal: string = Animal(name: “dog”) となります
+    // 型推論をしない場合 var animal Animal = Animal(name: “dog”) となります
     // Animal{} は、Struct から変数を得る時の書き方になります
     // name: “dog” は、Animal のプロパティ name に dog という文字列を代入しています
-    animal := Animal{name: “dog”}
+    animal := Animal{name: "dog"}
 
     // fmt.Println は、文字列を標準出力に表示する方法
     // animal の GetName メソッドを実行しています
@@ -234,7 +234,7 @@ func main() {
     // new により Struct Dog のポインタを代入しています
     dog := new(Dog)
     // dog にMixin された Animal の name プロパティに文字列 dog を代入しています
-    dog.name = “dog”
+    dog.name = "dog"
 
      // dog に MIxin された Animal の GetName メソッドを実行しています
      fmt.Println(dog.GetName())
