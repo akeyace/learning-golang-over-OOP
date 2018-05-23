@@ -11,12 +11,12 @@ Let's Try!
 1. import に "html/template"、"io" を追加します
     ```diff
       import (
-      +   "html/template"
-      +   "io"
+    +     "html/template"
+    +     "io"
           "net/http"
           "github.com/labstack/echo"
       )
-     ```
+    ```
 1. Template を読み込めるように Struct を追加します
     ```diff
           "github.com/labstack/echo"
@@ -105,51 +105,52 @@ Let's Try!
 1. server.go にルーティングを追加します
     - "cntent-name": に何か名前を付けてみましょう！
     - response.MyName の欄に自分の名前を書いてみましょう！
-    ```diff
-          e.GET("/api/users/:name", func(c echo.Context) error {
-              name := c.Param("name")
-              return c.JSON(http.StatusOK, Response{Name: name})
-          })
-    +     e.GET("/api-test", func(c echo.Context) error {
-    +         return c.Render(http.StatusOK, "api-test.html", map[string]interface{}{
-    +             "content-name": ここにコンテンツの名前を適当につけてみよう！,
-    +         })
-    +     })
-    +     e.POST("/api/users/request", func(c echo.Context) error {
-    +         request := new(AnswerRequest)
-    +         if err := c.Bind(request); err == nil {
-    +             return c.JSON(http.StatusBadRequest, ErrorResponse{100, "エラーです"})
-    +         }
-    +         response := new(AnswerResponse)
-    +         response.MyName = ここに名前をを入力してみよう！
-    +         response.YourName = request.Name
-    +       
-    +         ip := net.ParseIP(c.RealIP()).To4()
-    +       
-    +         log.Infof("貴方のサーバにアクセスがありました: {name: %s, IPAddr: %s", request.Name, ip)
-    +       
-    +         return c.JSON(http.StatusOK, response)
-    +     })
-    ```
+        ```diff
+              e.GET("/api/users/:name", func(c echo.Context) error {
+                  name := c.Param("name")
+                  return c.JSON(http.StatusOK, Response{Name: name})
+              })
+        +     e.GET("/api-test", func(c echo.Context) error {
+        +         return c.Render(http.StatusOK, "api-test.html", map[string]interface{}{
+        +             "content-name": ここにコンテンツの名前を適当につけてみよう！,
+        +         })
+        +     })
+        +     e.POST("/api/users/request", func(c echo.Context) error {
+        +         request := new(AnswerRequest)
+        +         if err := c.Bind(request); err == nil {
+        +             return c.JSON(http.StatusBadRequest, ErrorResponse{100, "エラーです"})
+        +         }
+        +         response := new(AnswerResponse)
+        +         response.MyName = ここに名前をを入力してみよう！
+        +         response.YourName = request.Name
+        +       
+        +         ip := net.ParseIP(c.RealIP()).To4()
+        +       
+        +         log.Infof("貴方のサーバにアクセスがありました: {name: %s, IPAddr: %s", request.Name, ip)
+        +       
+        +         return c.JSON(http.StatusOK, response)
+        +     })
+        ```
 1.  実は上記コードを追加しただけではエラーが発生します
     - import に何かを追加します。試してみましょう！
+        - Log.Infof は、"github.com/labstack/gommon/log" を import するので注意！
 1. API Request, Response 用の Struct を作ろう
     - リクエストもレスポンス同様に Struct が必要になります。
     - `json:"name"` というのは、タグと呼ばれる物で値の振る舞いを変更することができます
-      - この場合は、json のリクエスト、レスポンス時の名前を変更できます。
-    ```diff
-           Response struct {
-               Name string
-           }
-    +     AnswerRequest struct {
-    +         Name string `json:"name" query:"name"`
-    +     }
-    +     AnswerResponse struct {
-    +         MyName string `json:"my_name"`
-    +         YourName string `json:"your_name"`
-    +     }
-    
-    ```
+        - この場合は、json のリクエスト、レスポンス時の名前を変更できます。
+            ```diff
+                   Response struct {
+                       Name string
+                   }
+            +     AnswerRequest struct {
+            +         Name string `json:"name" query:"name"`
+            +     }
+            +     AnswerResponse struct {
+            +         MyName string `json:"my_name"`
+            +         YourName string `json:"your_name"`
+            +     }
+            
+            ```
 1. 上記コードだけでは動きません！
     - 何かの Response が不足している？
 1. 各ファイルを保存します
@@ -166,16 +167,15 @@ Let's Try!
     1. server.go に ライブラリ "github.com/labstack/echo/middleware" を追加する
     1. dep ensure を実行してライブラリを追加する
     1. CORS を全てのホストを受けられ可能に設定する
-    
-      ```diff
-            e := echo.New()
-      
-      +     e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-      +         AllowOrigins: []string{"*"},
-      +         AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-      +     }))
-      
-      ```
+        ```diff
+              e := echo.New()
+        
+        +     e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+        +         AllowOrigins: []string{"*"},
+        +         AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+        +     }))
+        
+        ```
 1. ファイルを保存して、サーバを再起動しましょう
 1. http://localhost:1323/api-test をブラウザで開いてみましょう
 1. 送信先IP を変更して実行してみましょう！
