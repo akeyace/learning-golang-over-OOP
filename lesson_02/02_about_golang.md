@@ -208,7 +208,7 @@ Golang では次のように書きます。
         - import "strconv"
         + import (
         +     "strconv"
-        +     "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/animal"
+        +     "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/animal"
         + )
         ```
     - Factory メソッド追加
@@ -247,8 +247,8 @@ Golang の場合、Factory Method パターンまでで十分で、より複雑�
     package factory
     
     import (
-        "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/animal"
-        "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/food"
+        "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/animal"
+        "github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/food"
     )
     
     type Factory struct {
