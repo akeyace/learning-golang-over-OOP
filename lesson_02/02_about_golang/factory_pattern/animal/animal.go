@@ -1,5 +1,6 @@
 package animal
 
+
 type (
 	InterfaceAnimal interface {
 		GetName() string
@@ -22,6 +23,18 @@ type (
 		Animal
 	}
 )
+
+func NewDog() Dog {
+	return Dog{Animal{"dog"}}
+}
+
+func NewCat() Cat {
+	return Cat{Animal{"cat"}}
+}
+
+func NewMonster() Monster {
+	return Monster{Animal{"monster"}}
+}
 
 func (a Animal) GetName() string {
 	return "I'm " + a.Name
