@@ -1,9 +1,9 @@
 package main
 import (
 	"fmt"
-	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/animal"
-	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/food"
-	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/factory"
+	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/factory_pattern/animal"
+	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/factory_pattern/food"
+	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/factory_pattern/factory"
 )
 
 func main(){

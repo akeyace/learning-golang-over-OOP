@@ -2,7 +2,7 @@ package food
 
 import (
 	"strconv"
-	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang_factory/animal"
+	"github.com/akeyace/learning-golang-over-OOP/lesson_02/02_about_golang/factory_pattern/animal"
 )
 
 type (
