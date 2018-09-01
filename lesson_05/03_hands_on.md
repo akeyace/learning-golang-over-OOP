@@ -21,5 +21,11 @@ https://github.com/olebedev/go-starter-kit
 ```bash
 # <username> は自身のユーザ名のディレクトリを作成して下さいませ！
 git clone git@github.com:olebedev/go-starter-kit.git $GOPATH/src/github.com/<username>/go-starter-kit
-$ cd $GOPATH/src/github.com/<username>/go-starter-kit
+
+cd $GOPATH/src/github.com/<username>/go-starter-kit
+
+
+# 例
+# git clone git@github.com:olebedev/go-starter-kit.git ~/go/src/github.com/akeyace/go-starter-kit
+# cd ~/go/src/github.com/akeyace/go-starter-kit
 ```
