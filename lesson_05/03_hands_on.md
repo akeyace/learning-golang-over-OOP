@@ -14,3 +14,12 @@ https://github.com/olebedev/go-starter-kit
     ```bash
     dep github.com/olebedev/go-starter-kit
     ```
+
+上記は誤りでした！
+正しくは、、、
+
+```bash
+# <username> は自身のユーザ名のディレクトリを作成して下さいませ！
+git clone git@github.com:olebedev/go-starter-kit.git $GOPATH/src/github.com/<username>/go-starter-kit
+$ cd $GOPATH/src/github.com/<username>/go-starter-kit
+```
