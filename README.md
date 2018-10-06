@@ -16,7 +16,7 @@ Java と Python の中間的なバランスの良い書き心地で、動作が�
 - スキルを磨いてより高単価ゲットしよう！
 
 ## 事前準備
-当勉強会では、チャットツール Slack を利用して情報連携を行います。
+当勉強会では、チャットツール Slack を利用して情報連携を行います。  
 詳細は、[Wiki - 環境について](https://github.com/akeyace/learning-golang-over-OOP/wiki/環境について)をご確認下さい。
 
 当勉強会では、wifi が利用可能です。
@@ -44,7 +44,7 @@ Java と Python の中間的なバランスの良い書き心地で、動作が�
   - お金に余裕のある方や、既に Jetbrains のアカウントを持っている方はこちらがオススメ
 
 ### Golang 環境構築
-環境構築の資料がございます。
+環境構築の資料がございます。  
 必要に応じて環境構築すると楽しいかもしれません！？
 
 [第一回 Golang ハンズオン 環境構築 〜 Web/API サーバを立てよう](https://github.com/akeyace/learning-golang-over-OOP/blob/master/lesson_01/03_hands_on.md)
