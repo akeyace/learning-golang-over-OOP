@@ -1,4 +1,4 @@
-# 本当は誰にも教えたくない！？ 第1回 実践 Golang勉強会
+# 本当は誰にも教えたくない！？ 実践 Golang勉強会
 ## 〜オブジェクト指向の再探求 そして次の世界へ〜
 
 ## Golang とは？
@@ -17,16 +17,12 @@ Java と Python の中間的なバランスの良い書き心地で、動作が�
 
 ## 事前準備
 当勉強会では、チャットツール Slack を利用して情報連携を行います。
-下記のリンクより、Slack にご参加下さい！
-- [Slack 招待リンク](https://join.slack.com/t/akline-learn-golang/shared_invite/enQtMzYzMjAwNjU3NjA2LTAyOTA5NGE0NTQyY2UyN2VkOTU1MmNjODNiMGE0ZDM0OTUyYzlkNGU4NmNjYWY3MzNkNGJlNjc5YzQ2NzkwNGU)
-  - このリンクは、2018/05/12 23:00 頃まで有効となります
-  - Slack 招待は原則勉強会参加者とさせて頂きます。
-
-また、勉強会を始めるにあたり、事前準備として、アプリケーションのダウンロードが必要になります。
+詳細は、[Wiki - 環境について](https://github.com/akeyace/learning-golang-over-OOP/wiki/環境について)をご確認下さい。
 
 当勉強会では、wifi が利用可能です。
 ホワイトボードに接続先情報が書かれているので、それを設定するのがオススメです。
 
+また、勉強会を始めるにあたり、事前準備として、アプリケーションのダウンロードが必要になります。
 必要なアプリケーションは下記 URL からダウンロードを開始して下さい
 
 - Golang
@@ -47,4 +43,8 @@ Java と Python の中間的なバランスの良い書き心地で、動作が�
   - 私は開発する時にはこちらを利用しています
   - お金に余裕のある方や、既に Jetbrains のアカウントを持っている方はこちらがオススメ
 
+### Golang 環境構築
+環境構築の資料がございます。
+必要に応じて環境構築すると楽しいかもしれません！？
 
+[第一回 Golang ハンズオン 環境構築 〜 Web/API サーバを立てよう](https://github.com/akeyace/learning-golang-over-OOP/blob/master/lesson_01/03_hands_on.md)
